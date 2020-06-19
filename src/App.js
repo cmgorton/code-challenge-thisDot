@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import UserList from "./components/UserList";
 import Pagination from "./components/Pagination";
 import Octocat from "./components/Octocat";
