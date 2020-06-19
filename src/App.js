@@ -12,11 +12,8 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
 
-  const handleInputChange = event => {
-    setQuery(event.target.value);
-  };
   useEffect(() => {
-    const data = localStorage.getItem("users", "results");
+    const data = localStorage.getItem("users");
     if (data) {
       setResponse(JSON.parse(data));
     }
@@ -24,7 +21,6 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(response));
-    localStorage.setItem("results", JSON.stringify(count));
   });
 
   const formSubmit = e => {
@@ -33,14 +29,17 @@ function App() {
       .get(`https://api.github.com/search/users?q=${query}&page=2&limit=14`)
       .then(response => {
         const data = response.data.items;
-        setCount(response.data.total_count);
         setResponse(data);
+        const count = response.data;
+        setCount(count)
       })
       .catch(errors => {
         console.error(errors);
       });
   };
-
+  const handleInputChange = event => {
+    setQuery(event.target.value);
+  }
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -72,7 +71,7 @@ function App() {
         />
         <button id="button">Find a user</button>
       </form>
-      <h2>{count} results</h2>
+      <h2>{count.total_count} results</h2>
       <UserList response={currentPosts} />
     </div>
   );
