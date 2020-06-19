@@ -1,38 +1,181 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@300;500&display=swap");
+/* ==== Global styles ==== */
+:root {
+  /* ==== Colors==== */
+  --black100: rgb(43, 49, 55);
+  --black200: rgb(36, 41, 46);
+  --white100: rgb(255, 255, 255);
+  --white200: rgb(250, 251, 252);
+  --green100: rgb(45, 186, 78);
+  --orange100: #dd8a22;
+  --orange200: #905a18;
+  /* ==== transitions ==== */
+  --transition: all 0.2s ease-in;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 300;
+  overflow-x: hidden;
+  background-color: var(--black100);
+  background-size: cover;
+  background-repeat: repeat;
+  padding: 0;
+  margin: 0;
+  color: var(--black200);
+}
+h1 {
+  color: var(--green100);
+  font-size: 5rem;
   text-align: center;
+  margin: 0;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2 {
+  color: var(--black100);
+  max-width: 40rem;
+  min-width: 20rem;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  background: var(--orange100);
+  padding: 10px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p {
+  padding: 10px;
+  font-size: 18px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ==== main styles ==== */
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, auto);
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+.cat {
+  width: 20rem;
+  height: 20rem;
+  margin: 0 auto;
+}
+form {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+#button,
+input {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 2rem 0;
+  background: #e8f0fd;
+  border: 1px solid var(--orange100);
+  box-shadow: 0 -5px 10px -4px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+#button {
+  transition: var(--transition);
+}
+#button:hover {
+  background: var(--orange100);
+  transform: translateY(-1px);
+}
+input {
+  padding-left: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ==== User styles ==== */
+.user-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+  justify-content: center;
+}
+.user {
+  background: var(--white200);
+  height: auto;
+  border: 3px solid transparent;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  margin: 1rem;
+  padding-bottom: 1rem;
+  transition: var(--transition);
+}
+.user__name {
+  font-size: 2rem;
+  text-decoration: none;
+  background: var(--green100);
+  color: var(--black100);
+  padding: 5px;
+  transition: var(--transition);
+}
+.user__name:hover {
+  background: var(--black100);
+  color: var(--green100);
+}
+.user img {
+  width: 100%;
+  height: 20rem;
+  object-fit: contain;
+  margin-top: 1rem;
+}
+.user:hover {
+  background: rgba(250, 251, 252, 0.8);
+  border: 3px solid var(--green100);
+}
+
+/* ==== Detail styles ==== */
+.details {
+  margin: 1rem;
+}
+.details__em {
+  color: var(--orange200);
+  font-weight: 500;
+}
+.user-list__link {
+  color: var(--black100);
+  text-decoration: none;
+}
+
+/* ==== Pagination styles ==== */
+.pagination {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+.pagination button {
+  border: none;
+}
+.pagination ul {
+  margin: 0;
+  padding: 0;
+}
+.page-link {
+  background: var(--green100);
+  color: var(--black200);
+  font-size: 2rem;
+  text-decoration: none;
+  margin: 0.5rem;
+  padding: 5px 5px;
+  transition: var(--transition);
+}
+.page-link:hover {
+  color: var(--green100);
+  background: var(--black200);
+}
+.page-link:active {
+  color: var(--green100);
+  background: var(--black200);
 }
