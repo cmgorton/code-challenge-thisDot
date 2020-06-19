@@ -1,6 +1,8 @@
 # This Dot code challenge
 
-Github API Search
+**Github API Search**
+
+[Deployed site can be viewed on Netlify](https://code-challenge-thisdot.netlify.app/)
 
 ## Instructions
 
