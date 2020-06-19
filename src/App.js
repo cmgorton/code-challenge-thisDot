@@ -16,18 +16,6 @@ function App() {
   const handleInputChange = event => {
     setQuery(event.target.value);
   };
-  useEffect(() => {
-    const data = localStorage.getItem("users", "results");
-    if (data) {
-      setResponse(JSON.parse(data));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(query));
-    localStorage.setItem("results", JSON.stringify(count));
-  });
-
 
   const formSubmit = e => {
     e.preventDefault()
