@@ -9,9 +9,11 @@ const Pagination = ({ currentPage, postsPerPage, totalPosts, paginate }) => {
 
   const prevPage = () => {
     setPrev(paginate(currentPage - 1));
+    console.log(prev)
   };
   const nextPage = () => {
     setNext(paginate(currentPage + 1));
+    console.log(next)
   };
   return (
     <nav className="pagination">
