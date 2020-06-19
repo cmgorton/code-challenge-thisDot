@@ -5,9 +5,15 @@ const Details = props => {
   const [allDetails, setAllDetails] = useState([]);
 
   useEffect(() => {
-    axios.get(`${props.details}?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`).then(response => {
-      setAllDetails(response.data);
-    });
+    axios.get(`${props.details}?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`,
+      {
+        headers: {
+          'User-Agent': 'request'
+        }
+      }).then(response => {
+        console.log(response)
+        setAllDetails(response.data);
+      });
   }, [props.details]);
 
   return (

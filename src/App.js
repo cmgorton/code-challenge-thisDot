@@ -71,7 +71,7 @@ function App() {
         />
         <button id="button">Find a user</button>
       </form>
-      <h2>{count.total_count} results</h2>
+      {/* <h2>{count.total_count} results</h2> */}
       <UserList response={currentPosts} />
     </div>
   );
