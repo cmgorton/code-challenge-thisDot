@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(response));
+    localStorage.setItem("users", JSON.stringify(query));
     localStorage.setItem("results", JSON.stringify(count));
   });
 
