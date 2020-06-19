@@ -17,7 +17,7 @@ function App() {
     setQuery(event.target.value);
   };
   useEffect(() => {
-    const data = localStorage.getItem("users", "results");
+    const data = localStorage.getItem("results", "users");
     if (data) {
       setResponse(JSON.parse(data));
     }
