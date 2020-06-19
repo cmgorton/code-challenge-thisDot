@@ -3,7 +3,6 @@ import React from "react";
 import User from "./User";
 
 const UserList = ({ response }) => {
-  console.log(response)
   return (
     <div className="user-list">
       {response.map(item => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import UserList from "./components/UserList";
 import Pagination from "./components/Pagination";
 import Octocat from "./components/Octocat";
@@ -12,23 +12,34 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
 
-
   const handleInputChange = event => {
     setQuery(event.target.value);
   };
+  useEffect(() => {
+    const data = localStorage.getItem("users", "results");
+    if (data) {
+      setResponse(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(response));
+    localStorage.setItem("results", JSON.stringify(count));
+  });
 
   const formSubmit = e => {
-    e.preventDefault()
-    axios.get(`https://api.github.com/search/users?q=${query}&page=2&limit=14`)
+    e.preventDefault();
+    axios
+      .get(`https://api.github.com/search/users?q=${query}&page=2&limit=14`)
       .then(response => {
         const data = response.data.items;
-        setResponse(data);
         setCount(response.data.total_count);
+        setResponse(data);
       })
       .catch(errors => {
         console.error(errors);
       });
-  }
+  };
 
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
@@ -59,9 +70,7 @@ function App() {
           value={query}
           aria-label="user name"
         />
-        <button id="button">
-          Find a user
-        </button>
+        <button id="button">Find a user</button>
       </form>
       <h2>{count} results</h2>
       <UserList response={currentPosts} />
